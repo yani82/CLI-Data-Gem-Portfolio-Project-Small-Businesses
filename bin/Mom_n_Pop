@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require '../lib/Mom_n_Pop' 
+require_relative '../config/Mom_n_Pop' 
 
 MomNPop::CLI.new.call #entry point 
  
