@@ -1,9 +1,0 @@
-require_relative "../lib/version"
-require_relative "../lib/cli"
-require_relative "../lib/adapters/api"
-require_relative "../lib/models/business" 
-#require_relative 'colorize'
-#require_relative "open-uri" 
-require "json" 
-require "pry" 
-#require "awesome_print"
