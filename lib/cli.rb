@@ -3,14 +3,23 @@ class MomNPop::CLI
     def call 
         welcome 
         list_businesses
-        selection 
+        option 
+        get_businesses
         thankyou 
     end  
+
+    #def main
+    #   print_all
+    #end 
+
+    #def print_all 
+    #   
+    #end 
 
     def welcome 
         input = nil
         puts <<-'EOF' 
-                             ~WELCOME TO MOM N' POP!~
+                             ~WELCOME TO MOM N POP!~
         $$$$$$$$
         $$$$$$$$$$
        $$$$$$$$$$$$
@@ -56,29 +65,46 @@ EOF
             4. DriveTech Computer Repair NYC - 4.5 ★ - na
             5. Framed on Madison - 5 ★ - $$ 
         DOC
-        @businesses = MomNPop::Business
+        # @businesses = MomNPop::Business
         # @businesses.each.with_index(1) do |business, i| 
-        #     puts "#{i}. #{business.name} - #{business.rating} - #{business.price_range}"
+        # puts "#{i}. #{business.name} - #{business.rating} - #{business.price_range}"
         # end 
     end 
 
-    def selection 
+    def option  
         input = nil 
         while input != "exit" 
         puts "Would you like to search another zipcode or exit?"
         input = gets.strip.downcase
 
-        if input.to_i > 0 
-            the_business = @businesses[input.to_i-1]
+        if input.to_i > 0
+            business = @businesses[input.to_i-1]
             puts "#{business.name} - #{business.rating} - #{business.price_range}"
         elsif input == "location" 
-            list_businesses
+            #list_businesses
         #else puts "Not sure what you want, type location or exit."
         end 
         end 
     end 
 
+    def get_businesses #arg based on? 
+        businesses_hash = API.new('https://api.yelp.com/v3/businesses/search').fetch.local.businesses 
+        @@businesses = businesses_hash.map do |business_hash| 
+            Business.new(business_hash)
+        end 
+    end 
+
     def thankyou 
-    puts "Thank you for buying local! See you again!"
+    puts <<-'EOF' 
+                    ~Thank you for buying local! See you again!~
+    _   _                 _                      
+    | | | |               | |                     
+    | |_| |__   __ _ _ __ | | ___   _  ___  _   _ 
+    | __| '_ \ / _` | '_ \| |/ / | | |/ _ \| | | |
+    | |_| | | | (_| | | | |   <| |_| | (_) | |_| |
+     \__|_| |_|\__,_|_| |_|_|\_\\__, |\___/ \__,_|
+                                 __/ |            
+                                |___/             
+    EOF
     end 
 end 

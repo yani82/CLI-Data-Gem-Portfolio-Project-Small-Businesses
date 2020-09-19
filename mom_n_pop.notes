@@ -1,0 +1,34 @@
+
+
+1. Plan your gem, imagine your interface 
+2. Start with the project structure - Google 
+3. Start with the entry point - the file run 
+4. Force that to build the CLI Interface 
+5. Stub out the interface 
+6. Start making things real 
+7. Discover objects 
+8. Program 
+9. A command line interface for MomNPop, starting with the Yelp end point link
+GET https://api.yelp.com/v3/businesses/search
+10. User types small/local businesses 
+11. Show a list of businesses 
+
+1. Example one of business 
+2. ....
+
+12. Which local business do you want to support? 
+13. What is a local business? 
+A local business:
+has a name 
+has a rating  
+has a price range 
+
+14: Parameters: 
+Location : string : Required if either latitude or longitude is not provided. This string indicates the geographic area to be used when searching for businesses. Examples: "New York City", "NYC", "350 5th Ave, New York, NY 10118". Businesses returned in the response may not be strictly within the specified location.
+
+15. Welcome User 
+16. User is in search of a nearby local business
+17. User keys in current location 
+18. User receives a list of nearby local businesses 
+19. User then chooses to continue with another zipcode or exit 
+20. Thank you User 
