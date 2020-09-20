@@ -1,25 +1,34 @@
 class MomNPop::CLI
 
+    # attr_accessor :name, :rating, :price_range
+
+    # def initialize(name, rating, price_range)
+    #     @name = []
+    #     @rating = []
+    #     @price_range = []
+    # end 
+
     def call 
-        welcome 
+        welcome
+        # main 
+        Api.get_businesses 
         list_businesses
-        option 
-        get_businesses
+        search
         thankyou 
     end  
 
-    #def main
-    #   print_all
-    #end 
+    # def main 
+    #     print_all 
+    # end 
 
-    #def print_all 
-    #   
-    #end 
+    def print_all 
+        Business.all.each {|b| puts b.name }
+    end 
 
     def welcome 
         input = nil
         puts <<-'EOF' 
-                             ~WELCOME TO MOM N POP!~
+                             ~WELCOME TO MOM N POP!~.teal
         $$$$$$$$
         $$$$$$$$$$
        $$$$$$$$$$$$
@@ -52,9 +61,6 @@ EOF
 
         puts "Enter your current location:"
         input = gets.strip.downcase
-        case input
-        when "10028" 
-        end 
     end 
 
     def list_businesses
@@ -71,24 +77,22 @@ EOF
         # end 
     end 
 
-    def option  
+    def search  
         input = nil 
         while input != "exit" 
         puts "Would you like to search another zipcode or exit?"
         input = gets.strip.downcase
 
-        if input.to_i > 0
+        if input.to_i > 0 
             business = @businesses[input.to_i-1]
             puts "#{business.name} - #{business.rating} - #{business.price_range}"
         elsif input == "location" 
-            #list_businesses
-        #else puts "Not sure what you want, type location or exit."
         end 
         end 
     end 
 
-    def get_businesses #arg based on? 
-        businesses_hash = API.new('https://api.yelp.com/v3/businesses/search').fetch.local.businesses 
+    def Api.get_businesses(name, rating, price_range) 
+        businesses_hash = API.get_businesses
         @@businesses = businesses_hash.map do |business_hash| 
             Business.new(business_hash)
         end 

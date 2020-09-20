@@ -1,36 +1,37 @@
-class API 
+class API
+    require 'yelp'
+
+# client = Yelp::Client.new({ consumer_key: YOUR_CONSUMER_KEY,
+#                             consumer_secret: YOUR_CONSUMER_SECRET,
+#                             token: YOUR_TOKEN,
+#                             token_secret: YOUR_TOKEN_SECRET
+#                           })
+    
     BASE_URL = 'https://api.yelp.com/v3/businesses/search'
     
-    # attr_reader :url 
+    attr_reader :name, :rating, :price_range
 
-    #Client_ID['N-RFQHJQ15ECi-2rnMq_Kw']
-    KEY = ['']
+    KEY = ENV['API_KEY'] 
 
-    def self.get_businesses
-        response = RestClient.get(BASE_URL)
+    def self.get_businesses(name, rating, price_range)
+        response = RestClient.get("#{BASE_URL}#{KEY}&name=#{name}&rating=#{rating}&price_range={price_range}.gte=")
         data = JSON.parse(response.body)
 
         data['results'].each do |business|
             name = business["name"]
             rating = business["rating"]
             price_range = business["price_range"] 
-            url = business["url"] 
-            Business.new(name, rating, price_range, url)
-        # url = self.url + '?apiKey=' + API_KEY + "&location=#{loc}"
-        # uri = URI.parse(url)
-        # body = uri.read
-        # data = JSON.parse(body)
-        # businesses = []
-        # data["businesses"].each do |business|
-        #     businesses << {name: business["name"], rating: business["rating"], price_range: business["price_range"]} 
-        # end
-        # businesses
+            Business.new(name, rating, price_range)
         end 
     end
 
-    def self.get_businesses_by_num(num)
+    def self.get_businesses_by_location(location)
         response = RestClient.get("#{BASE_URL}#{id}")
         data = JSON.parse(response.body) 
+        
+        data['results'].each do |business| 
+            Business.new(location[name])
     end
+    end 
 
 end

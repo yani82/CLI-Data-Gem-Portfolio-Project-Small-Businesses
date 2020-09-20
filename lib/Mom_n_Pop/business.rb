@@ -1,14 +1,13 @@
 class MomNPop::Business
 
-    attr_accessor :name, :rating, :price_range, :url 
+    attr_accessor :name, :rating, :price_range
 
     @@all = [] 
 
-    def intialize(name:, rating:, price_range:, url:)
+    def intialize(name:, rating:, price_range:)
         @name = name 
         @rating = rating 
-        @price_range = price_range 
-        @url = url 
+        @price_range = price_range  
         @@all << self 
     end 
 
