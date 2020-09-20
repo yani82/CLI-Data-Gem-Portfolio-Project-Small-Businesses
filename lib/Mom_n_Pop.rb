@@ -2,6 +2,8 @@ require "json"
 require "pry" 
 require 'rest-client'
 require 'dotenv/load'
+require 'yelp'
+require 'httparty'
 
 require_relative "Mom_n_Pop/version"
 require_relative "Mom_n_Pop/cli"
