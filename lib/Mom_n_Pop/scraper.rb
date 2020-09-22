@@ -14,6 +14,7 @@ class Scraper
         @@business_listing = list_of_local_businesses.map { |info| info.css(".info-secondary")}
         @@business_details = list_of_local_businesses.map { |info| info.css("a").attribute("href").value}
         @@business_details 
+        @@list_business_categories = list_of_local_businesses.map { |cat| cat.css(".categories a").map{ |var| var.text} }
     end 
 
     def self.business_listing  
