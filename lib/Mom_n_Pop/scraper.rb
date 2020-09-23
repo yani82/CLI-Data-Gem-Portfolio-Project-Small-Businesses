@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class Scraper 
+class MomNPop::Scraper 
 
     @@local_business_url = 'https://www.yellowpages.com/new-york-ny/local-business'
     @@business_listing = []
@@ -26,9 +26,9 @@ class Scraper
         @@business_details 
     end 
 
-
+    
     def self.retreive_single_listing(url) 
-        doc = Nokogiri::HTML(open(url))
+        local_businesses = Nokogiri::HTML(open(url))
 
         business_array = doc.css("").css("")
         business_name = doc.css("h1").text

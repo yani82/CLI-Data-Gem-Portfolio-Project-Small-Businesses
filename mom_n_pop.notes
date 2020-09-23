@@ -26,9 +26,14 @@ has a price range
 14: Parameters: 
 Location : string : Required if either latitude or longitude is not provided. This string indicates the geographic area to be used when searching for businesses. Examples: "New York City", "NYC", "350 5th Ave, New York, NY 10118". Businesses returned in the response may not be strictly within the specified location.
 
-15. Welcome User 
-16. User is in search of a nearby local business
-17. User keys in current location 
-18. User receives a list of nearby local businesses 
-19. User then chooses to continue with another zipcode or exit 
-20. Thank you User 
+15. User opens the app: Welcome User  
+16. App lists down local businesses
+17. App prompts which business do you want to choose (by number)
+18. App lists details of business chosen (that is level deeper?) 
+19. App asks do you want to see another business or exit? 
+20. If user chooses 'exit' then app bids "Come again! Thank you for supporting local businesses!"  
+
+CLASSES:
+- business
+- CLI (command line interface)
+- scraper 
