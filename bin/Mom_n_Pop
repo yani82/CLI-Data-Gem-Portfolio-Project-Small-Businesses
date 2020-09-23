@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require '../lib/Mom_n_Pop' 
+require '../lib/Mom_n_Pop' # '..' means up a level  
 
 MomNPop::CLI.new.call #entry point 
  
