@@ -1,6 +1,6 @@
-class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string methods 
+class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string methods/nesting 
 
-    #self is the class of CLI 
+    #.self is the instance of the CLI class
 
     def call #instance (variable) of the CLI class 
         #flow: user opens the app, gets a welcome message, lists down local businesses, app prompts which business do you want to choose (by number), app lists business details (that is level deeper?), app ask do you want to see another business or exit?, if exit then "Come again! Thank you for supporting local businesses!  
@@ -16,12 +16,16 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
 
     #Do I need an extra method to 'get businesses'?
     # def get_businesses 
-    #     @months = MomNPop::Business.all
+    #     @businesses = MomNPop::Business.all
     # end  
 
     def list_businesses
         business_array = MomNPop::Scraper.get_more_businesses #or .all?
         MomNPop::Business.create_from_array(business_array)
+        # or @businesses.each_with_index do |business, index| (with_index = can take an argument)
+        # puts "#{index + 1}. #{month}"
+        #end 
+        #end
     end 
 
     def user_input  
