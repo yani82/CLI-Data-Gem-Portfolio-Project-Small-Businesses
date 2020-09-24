@@ -56,7 +56,7 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
 
     def valid_input(input)
         #can I do something like input.to_i > 0 ?
-        valid_array = ['1', '2', '3', '4','5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+        valid_array = ['1', '2', '3', '4','5', '6', '7', '8', '9', '10']
         valid_array.include?(input) 
     end 
 
