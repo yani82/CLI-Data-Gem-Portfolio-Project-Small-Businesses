@@ -14,7 +14,7 @@ class MomNPop::Business
 
     def self.create_from_array(business_array)
         business_array.each do |b|
-        MomNPop::Business.new(movie)
+        MomNPop::Business.new(business)
         end 
     end 
 

@@ -8,3 +8,5 @@ gem 'rest-client'
 gem 'json' 
 gem 'dotenv'
 gem 'yelp'
+gem "nokogiri"
+gem 'open-uri

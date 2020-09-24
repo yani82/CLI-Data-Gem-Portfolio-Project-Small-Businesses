@@ -4,50 +4,24 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
 
     def call #instance (variable) of the CLI class 
         #flow: user opens the app, gets a welcome message, lists down local businesses, app prompts which business do you want to choose (by number), app lists business details (that is level deeper?), app ask do you want to see another business or exit?, if exit then "Come again! Thank you for supporting local businesses!  
-        welcome 
-        MomNPop::Scraper.scrape 
+        puts "\n~WELCOME TO MOM N POP!~\n"
+        MomNPop::Scraper.get_local_businesses 
+        #get_businesses
         list_businesses
         user_input
+        choose_business
+        valid_input
         thankyou 
     end  
 
-    def list_businesses
-        business_array = MomNPop::Scraper.scrape_with_attrs
-        MomNPop::Business.create_from_array(business_array)
-    end 
+    #Do I need an extra method to 'get businesses'?
+    # def get_businesses 
+    #     @months = MomNPop::Business.all
+    # end  
 
-    def welcome 
-        puts <<-'EOF' 
-                             ~WELCOME TO MOM N POP!~
-        $$$$$$$$
-        $$$$$$$$$$
-       $$$$$$$$$$$$
-       $$ 0    0 $$
-       $$   ()   $$
-      $$$ \    / $$$
-      $$$  \__/  $$$
-         \______/
-      _____!  !_____
-      !            !
-      !  !      !  !
-      /  !      /  !
-     /  /      /  /
-    /_ /______/_ /
-  | @@@       @@@|
- /0000000000000000\
-/                / \
-/                /   \
-/                /    /\
-/                /    //00\
-/                /    / \__/
-00000000000000000    /   /
-|               |   /   /
-|               |  /   /
-|               | /   /
-|               |/   /      
-/00\0000000000000000/00\
-\__/oooooooooooooooo\__/
-EOF
+    def list_businesses
+        business_array = MomNPop::Scraper.get_more_businesses #or .all?
+        MomNPop::Business.create_from_array(business_array)
     end 
 
     def user_input  
@@ -61,7 +35,7 @@ EOF
         elsif input == "list" 
             call 
         elsif list_businesses(input)
-            3.times do 
+            2.times do 
         end 
         businesses = choose_business(input)
         puts "Local business #{name}, #{categories}, #{phone_number}, #{address}"
@@ -76,9 +50,15 @@ EOF
         MomNPop::Business.all[value]
     end 
 
+    def valid_input(input)
+        #can I do something like input.to_i > 0 ?
+        valid_array = ['1', '2', '3', '4','5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30']
+        valid_array.include?(input) 
+    end 
+
     def thankyou 
     puts <<-'EOF' 
-                    ~Thank you for buying local! See you again!~
+                                            ~Come again! Thank you for supporting local businesses!~
     _   _                 _                      
     | | | |               | |                     
     | |_| |__   __ _ _ __ | | ___   _  ___  _   _ 
