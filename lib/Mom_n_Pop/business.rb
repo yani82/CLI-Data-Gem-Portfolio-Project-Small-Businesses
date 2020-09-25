@@ -1,14 +1,13 @@
 class MomNPop::Business
 
-    attr_accessor :name, :categories, :phone_number, :address
+    attr_accessor :name, :category, :phone_address
 
     @@all = [] 
 
     def intialize(business_hash)
         @name = business_hash[:name] 
-        @categories = business_hash[:categories]
-        @phone_number = business_hash[:phone_number]
-        @address = business_hash[:address]  
+        @category = business_hash[:category]
+        @phone_address = business_hash[:phone_address]  
         @@all << self 
     end 
 
