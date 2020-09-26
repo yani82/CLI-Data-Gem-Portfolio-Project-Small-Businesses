@@ -3,7 +3,6 @@ require "pry"
 require 'rest-client'
 require 'dotenv/load'
 require 'yelp'
-require 'httparty'
 require 'nokogiri'
 require "open-uri"
 

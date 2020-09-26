@@ -6,7 +6,7 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         #flow: user opens the app, gets a welcome message, lists down local businesses, app prompts which business do you want to choose (by number), app lists business details (that is level deeper?), app ask do you want to see another business or exit?, if exit then "Come again! Thank you for supporting local businesses!  
         puts "\n~WELCOME TO MOM N POP!~\n"
         puts "Let's buy local!" 
-        MomNPop::Scraper.list_businesses 
+        MomNPop::Scraper.list_businesses
         #get_businesses
         list_businesses
         user_input
@@ -34,15 +34,15 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         while input != "exit" 
         puts "Please enter the number of which business you're interested in for more details. You may exit at any time or list more options:"
         input = gets.strip 
-        case input 
-        if input == "exit" 
+
+        if input == 'exit' 
             exit 
-        elsif input == "list" 
+        elsif input == 'list' 
             call
-        elsif list_businesses(input)
+        elsif valid_input(input)
             2.times do 
         end 
-        businesses = choose_business(input)
+        business = choose_business(input)
         puts "Local business #{name}, #{category}, #{phone_address}"
         else 
             puts "Invalid entry"
