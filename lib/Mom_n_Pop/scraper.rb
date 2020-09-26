@@ -6,22 +6,37 @@ class MomNPop::Scraper
     # @@last_search_page_scraped = [] 
 
     def self.list_businesses
-        url = 'https://www.yellowpages.com/new-york-ny/local-business'
-        local_businesses = Nokogiri::HTML(url)
+        local_businesses = Nokogiri::HTML(open("https://www.yellowpages.com/new-york-ny/local-business"))
         
-        local_businesses.css("div.search-results.organic").each do |business| 
+        businesses = local_businesses.css("div.v-card") 
+        businesses.each do |business|
+           name = business.css("h2").text.strip
+           category = business.css("div.categories a").text.strip
+           phone_address = business.css("div.info-section.info-secondary").text.strip
+        #    puts name
+        #    puts category
+        #    puts phone_address
+        #MomNPop::Business.new(name, category, phone_address)
+        end 
+      end
+
+    # def self.list_businesses
+    #     url = 'https://www.yellowpages.com/new-york-ny/local-business'
+    #     local_businesses = Nokogiri::HTML(url)
+    #     businesses = local_businesses.css("div.v-card")
+    #     businesses.each do |business| 
             
-            name = local_businesses.css("div.v-card h2.n").text.strip 
-            category = local_businesses.css("div.categories a").text.strip#[0].children.text
-            phone_address = local_businesses.css("div.info-secondary").text.strip#.first #not getting what I need 
-            MomNPop::Business.new(name, category, phone_address)
+    #         name = business.css("h2").text.strip 
+    #         category = business.css("div.categories a").text.strip#[0].children.text
+    #         phone_address = business.css("div.info-section.info-secondary").text.strip#.first #not getting what I need 
+    #         MomNPop::Business.new(name, category, phone_address)
         # list_of_local_businesses = local_businesses.css(".v-card").map {|business| business}
         # @@business_listing = list_of_local_businesses.map {|info| info.css(".info-secondary")}
         # @@business_details = list_of_local_businesses.map {|info| info.css("a").attribute("href").value}
         # @@business_details 
         # @@list_business_categories = list_of_local_businesses.map {|cat| cat.css(".categories a").map{|var| var.text}} 
         #binding.pry
-    end 
+    # end 
 
     # def self.business_listing  
     #     @@business_listing   
@@ -48,5 +63,4 @@ class MomNPop::Scraper
 #     # div class "info" 
 #     # a class "business-name"  
 #     # span
-    end 
-end 
+end
