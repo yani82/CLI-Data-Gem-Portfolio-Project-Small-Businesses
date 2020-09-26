@@ -25,7 +25,7 @@ class MomNPop::Business
     # end 
 
     def self.all
-        MomNPop::Scraper.scrape_businesses
+        MomNPop::Scraper.list_businesses
         @@all 
         # puts "hello"
     end 
