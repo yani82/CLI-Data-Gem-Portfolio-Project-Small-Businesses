@@ -52,9 +52,9 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         MomNPop::Business.all[value]
     end 
 
-    def valid_input(input) 
-        input.to_i.between?(1, 30)
-    end 
+    # def valid_input#(input) 
+    #     input.to_i.between?(1, 30)
+    # end 
 
     def thankyou 
     puts <<-'EOF' 
