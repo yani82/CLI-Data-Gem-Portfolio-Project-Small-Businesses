@@ -9,12 +9,16 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         # system ("clear")
         puts "\n~WELCOME TO MOM N POP!~\n"
         puts "\nLet's buy local!\n\n" 
-        MomNPop::Scraper.scrape_site 
+        scrape_businesses
         get_businesses
         list_businesses
         user_input
         thankyou 
     end  
+
+    def scrape_businesses
+        MomNPop::Scraper.scrape_site 
+    end 
 
     def get_businesses 
         @businesses = MomNPop::Business.all #instance variable 

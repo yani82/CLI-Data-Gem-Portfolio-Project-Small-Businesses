@@ -13,9 +13,10 @@ class MomNPop::Business
 
     #create a class method find_by_name that takes in an arg the business name that you're looking for and returns the business instance in that name  
 
-    def self.find_by_name(name)  
-        business.all.find{|business| business.name == name}  
+    def self.find_by_name(name)  #should I create a method in CLI? that allows users to search for businesses by name? (calls @find_by_name?)
+        all.find{|business| business.name == name}
     end
+# binding.pry 
 
     def self.all
        #conditional if @@all is empty (remove) 
