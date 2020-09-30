@@ -9,6 +9,7 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         # system ("clear")
         puts "\n~WELCOME TO MOM N POP!~\n"
         puts "\nLet's buy local!\n\n" 
+        MomNPop::Scraper.scrape_site 
         get_businesses
         list_businesses
         user_input
@@ -16,7 +17,7 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
     end  
 
     def get_businesses 
-        @businesses = MomNPop::Business.all
+        @businesses = MomNPop::Business.all #instance variable 
     end  
 
     def list_businesses
@@ -25,18 +26,18 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
         end 
     end 
 
-    def user_input  
-        input = nil 
-        while input != "exit" #goes into thankyou 
-            puts "\nPlease enter the number of which business you're interested in for more details. You may type 'exit' at any time or list more options:\n"
+    def user_input  # add location/zipcode
+        input = "" #make exit case insensitive
+        while input.downcase != "exit" #goes into thankyou
+            puts "\nPlease enter the number of which business you're interested in for more details. You may type 'exit' at any time or #list another option:\n"
             input = gets.strip 
             if input.to_i.between?(1, 30) 
                 business = @businesses[input.to_i-1] #picks one business, -1 = index 0   
-                puts "\n#{business.name}\n #{business.category}\n #{business.phone_address}"
-            elsif input == "exit"
+                puts "\n#{business.name}\n #{business.category}\n #{business.phone_address}" #to see more open in browser "would you like to open this business in the browser +y/n?"
+            elsif input.downcase == "exit"
                 break 
             else 
-                puts "Invalid entry"
+                puts "Invalid entry" 
             end 
             end 
     end 

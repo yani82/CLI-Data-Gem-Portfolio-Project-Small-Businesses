@@ -1,12 +1,12 @@
 #!/usr/bin/env ruby
 #shebang line = speaking to bash terminal that we're using Ruby 
 
-require '../lib/Mom_n_Pop' # '..' means up a level  
+require_relative '../lib/Mom_n_Pop' # '..' means up a level  
 
 MomNPop::CLI.new.call 
 
 #entry point
-#.new = creates a new instance than puts it through initialize life-cycle method which is called on an instance 
+#.new = creates a new instance than puts it through initialize life-cycle method which is called on an instance (invokes the initialize method)
 #.self is an instance of the class 
 #.call = instance method 
  

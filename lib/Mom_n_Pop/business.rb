@@ -2,17 +2,22 @@ class MomNPop::Business
 
     attr_accessor :name, :category, :phone_address
 
-    @@all = []
-
-    def initialize(name, category, phone_address)
-        @name = name 
+    @@all = [] #an array where all instances of business are saved once initialized, a class variable accessible to the whole class 
+    
+    def initialize(name, category, phone_address) 
+        @name = name #instance variable
         @category = category
         @phone_address = phone_address 
         @@all << self
     end
 
+    #create a class method find_by_name that takes in an arg the business name that you're looking for and returns the business instance in that name  
+    # def find_by_name(name)
+    #     @business 
+    # end 
+
     def self.all
-        MomNPop::Scraper.scrape_site
+       #conditional if @@all is empty (remove) 
         @@all 
     end 
 

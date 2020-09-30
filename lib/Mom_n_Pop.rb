@@ -12,3 +12,7 @@ require_relative "Mom_n_Pop/business"
 module MomNPop
 
 end 
+
+#require = absolute path from folder 
+
+#require relative = relative path from one file to another 
