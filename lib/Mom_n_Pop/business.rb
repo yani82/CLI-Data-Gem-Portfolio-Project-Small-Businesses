@@ -5,7 +5,7 @@ class MomNPop::Business
     @@all = [] #an array where all instances of business are saved once initialized, a class variable accessible to the whole class 
     
     def initialize(name, category, phone_address) 
-        @name = name #instance variable/property 
+        @name = name #instance variable/property / defined on the instance 
         @category = category
         @phone_address = phone_address 
         @@all << self
@@ -17,8 +17,7 @@ class MomNPop::Business
         all.find{|business| business.name == name}
     end 
 
-    def self.all
-       #conditional if @@all is empty (remove) 
+    def self.all #class method that explicitly defining the intended receiver of this method 
         @@all 
     end 
 

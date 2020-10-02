@@ -37,3 +37,12 @@ CLASSES:
 - business
 - CLI (command line interface)
 - scraper 
+
+FLOW of interface: 
+1. user opens the app
+2. and a "Welcome" message is displayed
+3. lists down local businesses
+4. app prompts which business do you want to choose (by number)
+5. app lists business details (that is level deeper?)
+6. app asks "do you want to see another business or exit?" 
+7. if "exit" then "Come again! Thank you for supporting local businesses!" 
