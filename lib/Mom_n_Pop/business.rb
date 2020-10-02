@@ -5,7 +5,7 @@ class MomNPop::Business
     @@all = [] #an array where all instances of business are saved once initialized, a class variable accessible to the whole class 
     
     def initialize(name, category, phone_address) 
-        @name = name #instance variable
+        @name = name #instance variable/property 
         @category = category
         @phone_address = phone_address 
         @@all << self
@@ -15,8 +15,7 @@ class MomNPop::Business
 
     def self.find_by_name(name)  #should I create a method in CLI? that allows users to search for businesses by name? (calls @find_by_name?)
         all.find{|business| business.name == name}
-    end
-# binding.pry 
+    end 
 
     def self.all
        #conditional if @@all is empty (remove) 
@@ -24,3 +23,5 @@ class MomNPop::Business
     end 
 
 end 
+
+#self. class method because only the class knows about everything that has been created

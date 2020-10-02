@@ -17,21 +17,22 @@ class MomNPop::CLI #:: name spacing, so it doesn't over-wright the Ruby string m
     end  
 
     def scrape_businesses
-        MomNPop::Scraper.scrape_site 
+        MomNPop::Scraper.scrape_site #calling the method from scraper.rb
     end 
 
     def get_businesses 
-        @businesses = MomNPop::Business.all #instance variable 
+        @businesses = MomNPop::Business.all #instance variable that can be used in other methods & .all is calling the .all method in business.rb
     end  
 
     def list_businesses
-        @businesses.each_with_index do |business, index| #(with_index = can take an argument)
+        @businesses.each do |business| 
         puts business.name
         end 
     end 
 
     def user_input  # add location/zipcode
-        input = "" #make exit case insensitive
+        #add find_by_name by using inpit = Business.find(business, in terminal Business.find(22)
+        input = "" #make exit case insensitive 
         while input.downcase != "exit" #goes into thankyou
             puts "\nPlease enter the number of which business you're interested in for more details. You may type 'exit' at any time or #list another option:\n"
             input = gets.strip 
